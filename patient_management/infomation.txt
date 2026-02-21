@@ -1,0 +1,50 @@
+Here is the exact path of the "Name" value:
+
+Database → Model: The Database gives the name to the Model (using the Model's Setter).
+
+Model → DTO: In the Mapper, we fetch the name from the Model (using the Getter) and put it into the DTO (using the Setter).
+
+DTO → Service: The Service now has a list of these filled DTOs.
+
+Service → Controller: The Service returns that list to the Controller.
+
+Controller → User: This is the tiny flip: The Controller sends the DTOs to the user's browser. The browser (or the library Spring uses) calls the DTO's Getter to read the data so it can show it on the screen.
+
+
+To summarize your "Getter/Setter" logic:
+Model Setter: Fills the object from the Database.
+
+Model Getter: Takes data out to give to the Mapper.
+
+DTO Setter: The Mapper uses this to "pour" the data into the DTO.
+
+DTO Getter: The Controller/Browser uses this to finally "read" and show the data to the User.
+
+
+
+Why does the Controller need the DTO Getter?
+When the Controller says "Hey Browser, here is the Patient info!", it sends the DTO object. The browser doesn't know what's inside that Java object. Spring Boot has to "read" the fields using the DTO's Getters to turn them into text (JSON) that the browser can understand.
+
+Simple Rule: > * Setters are for filling the bucket.
+
+Getters are for emptying the bucket to show someone what's inside.
+
+
+
+
+
+
+Understanding the Flow (One More Time!)
+Now that you have the Controller, here is how the Getters and Setters you were asking about finally finish their journey:
+
+The User hits the URL /patients/getAll.
+
+The Controller calls patientService.getPatients().
+
+The Service fetches the Models (using Model Setters from the DB).
+
+The Mapper converts Models to DTOs (using Model Getters to read and DTO Setters to fill).
+
+The Controller returns the DTO List.
+
+Spring Boot uses DTO Getters to turn that list into the JSON text the user sees.
