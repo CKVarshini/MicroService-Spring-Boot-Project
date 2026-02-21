@@ -1,0 +1,13 @@
+### POST All Patients
+POST http://localhost:8080/patients
+Content-Type: application/json
+
+{
+  "name": "ytv",
+  "email": "abrhgvhgyvg@gmail.com",
+  "address": "456 main road",
+  "dateOfBirth": "1993-03-08",
+  "registerDate": "2025-06-10"
+  
+ 
+}
