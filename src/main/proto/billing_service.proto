@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+// Billing Service Proto File : this file defines the gRPC service and messages for the Billing Service.
+option java_multiple_files = true;
+option java_package = "com.pm.billing";
+
+// The request message containing the billing account details.
+service BillingService {
+  // Creates a new billing account with the provided patient details and returns the account ID and status.
+  rpc CreateBillingAccount (BillingRequest) returns (BillingResponse);
+}
+
+//DTO ot the Java object that will be used to create a billing account.
+message BillingRequest {
+
+  string patient_id = 1;
+  string name = 2;
+  string email = 3;
+  
+}
+
+message BillingResponse {
+  string accountID = 1;
+  string status = 2;
+  
+}

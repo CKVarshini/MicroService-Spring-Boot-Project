@@ -1,0 +1,10 @@
+### POST All Patients
+POST http://localhost:8082/patients
+Content-Type: application/json
+
+{
+"name": "hyyu",
+"email": "hyjkdfn@example.com",
+"address": "123 Main St",
+"dateOfBirth": "1990-05-15"
+}
